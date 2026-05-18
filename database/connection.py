@@ -28,4 +28,4 @@ def init_db() -> None:
     seed(conn)
 
     conn.close()
-    print(f"init_db: БД готова → {_DB_PATH}")
+    print("БД инициализирована")

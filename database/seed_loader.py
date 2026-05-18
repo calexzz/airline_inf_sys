@@ -30,10 +30,6 @@ def _load_aircrafts(conn: sqlite3.Connection) -> None:
     )
 
 def _load_flights(conn: sqlite3.Connection) -> None:
-    """
-    В CSV хранятся IATA-код аэропорта и рег. номер ВС (читаемо!),
-    но в БД нужны числовые id — делаем lookup.
-    """
     with open(DATA_DIR / "flights.csv", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
@@ -50,14 +46,14 @@ def _load_flights(conn: sqlite3.Connection) -> None:
     prepared = []
     for r in rows:
         prepared.append({
-            "flight_number":  r["flight_number"],
-            "origin_id":      airport_id[r["origin_iata"]],
-            "dest_id":        airport_id[r["dest_iata"]],
-            "aircraft_id":    aircraft_id[r["aircraft_reg"]],
+            "flight_number": r["flight_number"],
+            "origin_id": airport_id[r["origin_iata"]],
+            "dest_id": airport_id[r["dest_iata"]],
+            "aircraft_id": aircraft_id[r["aircraft_reg"]],
             "departure_time": r["departure_time"],
-            "arrival_time":   r["arrival_time"],
-            "base_price":     float(r["base_price"]),
-            "status":         r["status"],
+            "arrival_time": r["arrival_time"],
+            "base_price": float(r["base_price"]),
+            "status": r["status"],
         })
 
     conn.executemany(
@@ -97,12 +93,12 @@ def _load_bookings(conn: sqlite3.Connection) -> None:
     for r in rows:
         prepared.append({
             "passenger_id": passenger_id[r["passenger_passport"]],
-            "flight_id":    flight_id[r["flight_number"]],
-            "seat_number":  r["seat_number"],
-            "class":        r["class"],
-            "price":        float(r["price"]),
-            "status":       r["status"],
-            "booked_at":    r["booked_at"],
+            "flight_id": flight_id[r["flight_number"]],
+            "seat_number": r["seat_number"],
+            "class": r["class"],
+            "price": float(r["price"]),
+            "status": r["status"],
+            "booked_at": r["booked_at"],
         })
 
     conn.executemany(
@@ -141,8 +137,8 @@ def _load_flight_crew(conn: sqlite3.Connection) -> None:
     for r in rows:
         prepared.append({
             "flight_id": flight_id[r["flight_number"]],
-            "crew_id":   crew_id[r["crew_license"]],
-            "position":  r["position"],
+            "crew_id": crew_id[r["crew_license"]],
+            "position": r["position"],
         })
 
     conn.executemany(
