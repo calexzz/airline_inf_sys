@@ -1,9 +1,14 @@
 last_name,first_name,role,license_num,license_exp
 Громов,Михаил,captain,CPL-RU-001,2027-03-15
 Зайцев,Алексей,captain,CPL-RU-002,2026-11-20
+Морозов,Игорь,captain,CPL-RU-005,2027-05-12
+Волков,Сергей,captain,CPL-RU-006,2026-08-18
 Кузнецова,Ирина,first_officer,CPL-RU-003,2028-05-10
 Белов,Андрей,first_officer,CPL-RU-004,2027-08-30
+Павлов,Дмитрий,first_officer,CPL-RU-007,2026-12-01
 Романова,Юлия,flight_attendant,FA-RU-001,2026-06-15
 Степанов,Кирилл,flight_attendant,FA-RU-002,2027-01-20
 Николаева,Вера,flight_attendant,FA-RU-003,2026-09-25
 Попов,Денис,flight_attendant,FA-RU-004,2028-02-10
+Семенова,Ольга,flight_attendant,FA-RU-005,2026-10-14
+Козлов,Илья,flight_attendant,FA-RU-006,2027-04-19

@@ -1,6 +1,10 @@
 reg_number,model,capacity,status
 RA-89001,Sukhoi Superjet 100,98,active
-RA-73012,Boeing 737-800,189,active
-RA-96025,Ilyushin Il-96-300,262,active
+RA-89002,Sukhoi Superjet 100,98,active
 RA-89050,Sukhoi Superjet 100,98,maintenance
+RA-73012,Boeing 737-800,189,active
+RA-73013,Boeing 737-800,189,active
+RA-73014,Boeing 737-800,189,active
 RA-73099,Boeing 737 MAX 8,189,active
+RA-96025,Ilyushin Il-96-300,262,active
+RA-96026,Ilyushin Il-96-300,262,active
