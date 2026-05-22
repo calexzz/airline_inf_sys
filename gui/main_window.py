@@ -163,31 +163,31 @@ class MainWindow:
     def _show_flights(self):
         self._set_active_btn(self._nav_buttons[1])
         self._clear_content()
-        from gui.flights_view import FlightsView
+        from gui.flights_window import FlightsView
         FlightsView(self.content).grid(row=0, column=0, sticky="nsew")
 
     def _show_bookings(self):
         self._set_active_btn(self._nav_buttons[2])
         self._clear_content()
-        from gui.bookings_view import BookingsView
+        from gui.bookings_window import BookingsView
         BookingsView(self.content).grid(row=0, column=0, sticky="nsew")
 
     def _show_passengers(self):
         self._set_active_btn(self._nav_buttons[3])
         self._clear_content()
-        from gui.passengers_view import PassengersView
+        from gui.passengers_window import PassengersView
         PassengersView(self.content).grid(row=0, column=0, sticky="nsew")
 
     def _show_crew(self):
         self._set_active_btn(self._nav_buttons[4])
         self._clear_content()
-        from gui.crew_view import CrewView
+        from gui.crew_window import CrewView
         CrewView(self.content).grid(row=0, column=0, sticky="nsew")
 
     def _show_reports(self):
         self._set_active_btn(self._nav_buttons[5])
         self._clear_content()
-        from gui.reports_view import ReportsView
+        from gui.reports_window import ReportsView
         ReportsView(self.content).grid(row=0, column=0, sticky="nsew")
 
 class DashboardView(tk.Frame):
