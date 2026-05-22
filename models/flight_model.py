@@ -79,24 +79,26 @@ def get_flights_by_route(origin_iata: str, dest_iata: str) -> list[sqlite3.Row]:
 
 
 def search_flights(query: str) -> list[sqlite3.Row]:
-    """
-    Поиск по номеру рейса, городу отправления или прибытия.
-    """
     like = f"%{query}%"
     conn = get_connection()
     rows = conn.execute("""
         SELECT
             f.flight_id,
             f.flight_number,
-            a1.city        AS origin_city,
-            a2.city        AS dest_city,
+            a1.city       AS origin_city,
+            a1.iata_code  AS origin_iata,
+            a2.city       AS dest_city,
+            a2.iata_code  AS dest_iata,
+            ac.model      AS aircraft_model,
+            ac.reg_number AS aircraft_reg,
             f.departure_time,
             f.arrival_time,
             f.base_price,
             f.status
         FROM flights f
-        JOIN airports a1  ON f.origin_id = a1.airport_id
-        JOIN airports a2  ON f.dest_id   = a2.airport_id
+        JOIN airports a1  ON f.origin_id   = a1.airport_id
+        JOIN airports a2  ON f.dest_id     = a2.airport_id
+        JOIN aircrafts ac ON f.aircraft_id = ac.aircraft_id
         WHERE f.flight_number LIKE ?
            OR a1.city         LIKE ?
            OR a2.city         LIKE ?
