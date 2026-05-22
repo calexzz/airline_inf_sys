@@ -46,7 +46,6 @@ def get_passenger_by_passport(passport_num: str) -> sqlite3.Row | None:
 
 
 def search_passengers(query: str) -> list[sqlite3.Row]:
-    """Поиск по фамилии, имени, паспорту или email"""
     like = f"%{query}%"
     conn = get_connection()
     rows = conn.execute("""
@@ -56,12 +55,17 @@ def search_passengers(query: str) -> list[sqlite3.Row]:
             p.first_name,
             p.passport_num,
             p.email,
-            p.phone
+            p.phone,
+            COUNT(b.booking_id) AS total_flights
         FROM passengers p
+        LEFT JOIN bookings b
+               ON b.passenger_id = p.passenger_id
+              AND b.status = 'confirmed'
         WHERE p.last_name    LIKE ?
            OR p.first_name   LIKE ?
            OR p.passport_num LIKE ?
            OR p.email        LIKE ?
+        GROUP BY p.passenger_id
         ORDER BY p.last_name
     """, (like, like, like, like)).fetchall()
     conn.close()
